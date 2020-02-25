@@ -222,3 +222,49 @@ c2c
             buyer: buyerId,
             time: Date.now(),
         }
+# 获取提币地址列表
+    uri:/service/withdraw_address_list
+    mothod:GET
+    input:
+        symbol: string 币种
+    return:
+        [
+            {
+                _id: ObjectId,
+                address: address,
+                symbol: symbol,
+                createTime: Date.now(),
+                uid: uid,
+                name: name,
+            },
+            {
+                ...
+            }
+        ]
+
+# 添加提币地址
+    uri:/service/create_withdraw_address
+    mothod:GET
+    input:
+        symbol: string 币种
+        address: string 地址
+        code: string 验证码
+        name: string 钱包备注
+    return:
+        {
+            _id: ObjectId,
+            address: address,
+            symbol: symbol,
+            createTime: Date.now(),
+            uid: uid,
+            name: name,
+        }
+
+# 删除提币地址
+    uri:/service/del_withdraw_address
+    mothod:GET
+    input:
+        id:string 要删除的条目对应的ObjectId
+    return:
+        success || error
+    
