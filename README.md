@@ -26,7 +26,6 @@ c2c
     mothod: GET
     input:
         phone: string  电话 
-        mail: string  邮箱
     return:
         success || error
 # 登录
@@ -34,9 +33,7 @@ c2c
     mothod: GET
     input:
         phone: string  电话 
-        mail: string  邮箱
         password: string 密码
-        verify: string 验证码
     return:
         {
             uid: number
