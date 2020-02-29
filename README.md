@@ -44,6 +44,24 @@ c2c
             lock_asset:{} //锁定资产
             create_time: Date 
         }
+# 登录信息获取
+    uri:/service/user_info
+    mothod:GET
+    input:
+        null
+    return:
+        {
+            basicInfo.uid 
+            basicInfo.phone 
+            basicInfo.mail 
+            basicInfo.username //若未设置则为""
+            basicInfo.username_state // 0未设置，1已设置
+            basicInfo.freeze_asset 
+            basicInfo.asset  
+            basicInfo.lock_asset  =
+            basicInfo.create_time = this.create_time;
+            deal_pwd_state // 0未设置，1已设置
+        }
 # 登出
     uri: /service/logout
     mothod: GET
