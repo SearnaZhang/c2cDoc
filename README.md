@@ -49,6 +49,43 @@ c2c
     mothod: GET
     input: NaN
     return: success
+# 设置昵称
+    uri:/service/set_nickname
+    mothod:GET
+    input:
+        nickname:string 昵称
+    return:
+        success || error
+# 重置昵称
+    uri:/service/reset_nickname
+    mothod:GET
+    input:
+        nickname:string 昵称
+    return:
+        success || error
+# 设置交易密码
+    uri:/service/set_deal_pwd
+    mothod:GET
+    input:
+        dealPwd:string 交易密码
+    return:
+        success || error
+# 重置交易密码
+    uri:/service/reset_deal_pwd
+    mothod:GET
+    input:
+        oldpwd:string 老交易密码
+        newpwd:string 新交易密码
+    return:
+        success || error
+# 重置登录密码
+    uri:/service/resetpwd
+    mothod:GET
+    input:
+        oldpwd:string 老密码
+        newpwd:string 新密码
+    return:
+        success || error
 # 获取充币地址
     uri: /service/create_address
     mothod: GET
