@@ -57,7 +57,7 @@ c2c
             basicInfo.username //若未设置则为""
             basicInfo.username_state // 0未设置，1已设置
             basicInfo.freeze_asset 
-            basicInfo.asset  
+            basicInfo.asset  //资产信息
             basicInfo.lock_asset  =
             basicInfo.create_time = this.create_time;
             deal_pwd_state // 0未设置，1已设置
@@ -320,3 +320,41 @@ c2c
     return:
         success || error
     
+# 获取充币记录
+    uri:/service/deposit_history
+    mothod:GET
+    input:
+        symbol:string 币种
+    return:
+        {
+            num 总数
+            data:
+                {
+                    uid
+                    symbol
+                    from
+                    to
+                    amount
+                    txid
+                    time
+                }
+        }
+# 获取提币记录
+    uri:/service/withdraw_history
+    mothod:GET
+    input:
+        symbol:string 币种
+    return:
+        {
+            num 总数
+            data:
+                {
+                    uid
+                    symbol
+                    from
+                    to
+                    amount
+                    txid
+                    time
+                }
+        }
