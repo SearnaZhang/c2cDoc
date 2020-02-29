@@ -33,7 +33,7 @@ c2c
     mothod: GET
     input:
         phone: string  电话 
-        password: string 密码
+        pwd: string 密码
     return:
         {
             uid: number
