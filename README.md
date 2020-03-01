@@ -104,6 +104,28 @@ c2c
         newpwd:string 新密码
     return:
         success || error
+# 获取币种列表
+    uri:/service/coin_list
+    mothod:GET
+    input: null
+    return:
+        ['btc','usdt'...]
+# 资产首页
+    uri:/service/assets_detail
+    mothod:GET
+    input:null
+    return:
+        {
+            asset:{
+                'btc':1,
+                ...
+            },//资产
+            freeze_asset:{
+                'btc':1,
+                ...
+            }//冻结资产
+        }
+
 # 获取充币地址
     uri: /service/create_address
     mothod: GET
