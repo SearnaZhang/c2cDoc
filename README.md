@@ -168,6 +168,53 @@ c2c
             time: Date.now(),
             memo: memo, 
         }
+# C2C挂单列表获取
+    uri:/c2c/getPendList
+    mothod:GET
+    input:
+        symbol:string 币种
+    return:
+        [
+            {
+                uid: uid,
+                symbol: symbol,
+                amount: mongoose.Types.Decimal128.fromString(amount),
+                price: price,
+                type: type,
+                paytype_bank: paytype_bank,
+                paytype_wx: paytype_wx,
+                paytype_alipay: paytype_alipay,
+                minmum: minmum,
+                maxmum: maxmum,
+                canceled: 0, //c2c挂单状态（0：正常, 1:已取消）
+                time: Date.now(),
+                memo: memo, 
+            },
+            ...
+        ]
+# C2C用户发布挂单列表获取
+    uri:/c2c/getUserPendList
+    mothod:GET
+    input: null
+    return:
+        [
+            {
+                uid: uid,
+                symbol: symbol,
+                amount: mongoose.Types.Decimal128.fromString(amount),
+                price: price,
+                type: type,
+                paytype_bank: paytype_bank,
+                paytype_wx: paytype_wx,
+                paytype_alipay: paytype_alipay,
+                minmum: minmum,
+                maxmum: maxmum,
+                canceled: 0, //c2c挂单状态（0：正常, 1:已取消）
+                time: Date.now(),
+                memo: memo, 
+            },
+            ...
+        ]        
 # C2C取消挂单
     uri: /c2c/pend_cancel
     mothod: GET
