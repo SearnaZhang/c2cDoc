@@ -132,6 +132,11 @@ c2c
     input: 
         symbol: string 币种名 btc,eth...
     return: success || error
+# 获取C2C操作验证码
+    uri:/c2c/getVerifyCode
+    mothod:GET
+    input:null
+    return: success || error
 # C2C挂单
     uri: /c2c/pend
     mothod: GET
@@ -145,6 +150,8 @@ c2c
         paytype_alipay:number 是否支持支付宝
         minnum: number 支持的最小交易数量
         maxnum: number 支持的最大交易数量
+        pwd:string 交易密码
+        code:string 验证码
     return:
         {
             uid: uid,
