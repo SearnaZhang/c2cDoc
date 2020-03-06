@@ -495,3 +495,31 @@ c2c
         code 验证码
     return:
         success || error
+# 获取收款方式
+    uri:/service/getPayPath
+    mothod:GET
+    input:
+        uid 收款人uid
+        paytype: 渠道(1.银行卡，2.微信，3.支付宝)
+    return:
+        //银行卡
+        {
+            name: String, //姓名
+            register_bank: String, //开户行
+            second_bank: String, //支行
+            card: String, //卡号
+            createTime: Date,
+            uid: Number,
+            status: { type: Number, default: 0 },
+        }
+        //微信，支付宝 
+        {
+            name: String, //姓名
+            account: String, //微信账号
+            path: String, //二维码路径
+            createTime: Date,
+            uid: Number,
+            status: { type: Number, default: 0 },//0 有效 1 已删除
+        }
+        收款码文件名命名方式为 wechat+uid+后缀|| alipay+uid+后缀  如 wechat10001.jpg || alipay10001.png 
+        收款码访问uri为 ip:port/wechat10001.jpg || ip:port/alipay10001.jpg
