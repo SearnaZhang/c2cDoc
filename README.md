@@ -244,6 +244,9 @@ c2c
         uid: number
         pend_id: string 下单对应的挂单ID
         type: number 买卖类型 （1：购买，2出售）
+        amount: number 交易数量
+        pwd:string  交易密码
+        code: string 验证码
     return:
         C2C下单信息
         {
@@ -434,3 +437,61 @@ c2c
                     time
                 }
         }
+# 添加微信收款方式
+    uri:/service/addWechat
+    mothod:POST
+    input:
+        pwd 交易密码
+        code 验证码
+        account 微信账号
+        name 姓名
+        file 二维码图片(jpg 或者 png)
+    return:
+        success || error
+# 删除微信收款方式
+    uri:/service/delWechat
+    mothod:POST
+    input:
+        pwd 交易密码
+        code 验证码
+    return:
+        success || error
+# 添加银行卡收款方式
+    uri:/service/addBankcard
+    mothod:GET
+    input:
+        pwd 交易密码
+        code 验证码
+        name 开户名
+        register_bank 开户行
+        second_bank 支行
+        card 卡号
+    return:
+        success || error
+# 删除银行卡收款方式
+    uri:/service/delBankcard
+    mothod:GET
+    input:
+        pwd 交易密码
+        code 验证码
+    return:
+        success || error
+# 添加支付宝收款方式
+    uri:/service/addAlipay
+    mothod:POST
+    input:
+        pwd 交易密码
+        code 验证码
+        account 支付宝账号
+        name 姓名
+        file 二维码图片(jpg 或者 png)
+    return:
+        success || error
+# 删除支付宝收款方式
+    uri:/service/delAlipay
+    mothod:POST
+    input:
+        pwd 交易密码
+        code 验证码
+    return:
+        success || error
