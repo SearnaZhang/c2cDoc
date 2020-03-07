@@ -523,3 +523,20 @@ c2c
         }
         收款码文件名命名方式为 wechat+uid+后缀|| alipay+uid+后缀  如 wechat10001.jpg || alipay10001.png 
         收款码访问uri为 ip:port/wechat10001.jpg || ip:port/alipay10001.jpg
+# 获取商家名称
+    uri:/service/getNickName
+    mothod:GET
+    input:
+        uid 商家uid
+    return:
+        "xxx" 商家名称 || "" 未查找到
+
+
+# order订单状态
+    es.STATUS_WAIT_PAY = 0; 等待付款
+    es.STATUS_FINISHED = 1; 已完成
+    es.STATUS_CANCELED = 2; 已取消
+    es.STATUS_PAYED = 3; 已付款
+    es.STATUS_APPEAL = 4; 已申诉
+    es.STATUS_APPEAL_FINISHED = 5; 申诉完成，成交
+    es.STATUS_APPEAL_CANCELED = 6; 申诉完成，已取消
