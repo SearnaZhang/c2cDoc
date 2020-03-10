@@ -264,6 +264,35 @@ c2c
             buyer: buyerId,
             time: Date.now(),
         }   
+# C2C获取用户订单列表
+    uri:/c2c/getOrderList
+    mothod:GET
+    input:
+        status 订单状态
+    return:
+        {
+            total_page 总页数
+            total_count z总条数
+            [
+                {
+                    symbol: pendRecord.symbol,
+                    pend_id: pendId,
+                    pend_type: pendType,
+                    amount: decimalAmount,
+                    code: tools.random(10000001, 99999999),
+                    status: C2COrderModel.STATUS_WAIT_PAY,
+                    transfer_name: ctx.args.transfer_name,
+                    transfer_bank: ctx.args.transfer_bank,
+                    transfer_subbank: ctx.args.transfer_subbank,
+                    transfer_account: ctx.args.transfer_account,
+                    seller: sellerId,
+                    buyer: buyerId,
+                    time: Date.now(),
+                },
+                ...
+            ]
+        }
+
 # C2C买家确认付款
     uri:/c2c/pay
     mothod: GET
