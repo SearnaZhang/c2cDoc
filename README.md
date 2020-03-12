@@ -51,17 +51,23 @@ c2c
         null
     return:
         {
-            basicInfo.uid 
-            basicInfo.phone 
-            basicInfo.mail 
-            basicInfo.username //若未设置则为""
-            basicInfo.username_state // 0未设置，1已设置
-            basicInfo.freeze_asset 
-            basicInfo.asset  //资产信息
-            basicInfo.lock_asset  =
-            basicInfo.create_time = this.create_time;
-            deal_pwd_state // 0未设置，1已设置
+            basickinfo:{
+                basicInfo.uid 
+                basicInfo.phone 
+                basicInfo.mail 
+                basicInfo.username //若未设置则为""
+                basicInfo.username_state // 0未设置，1已设置
+                basicInfo.freeze_asset 
+                basicInfo.asset  //资产信息
+                basicInfo.lock_asset  =
+                basicInfo.create_time = this.create_time;
+                deal_pwd_state // 0未设置，1已设置
+            }
+            wechat_state: 0 未设置，1 已设置
+            alipay_state: 0 未设置，1 已设置
+            bankcard_state: 0 未设置，1 已设置
         }
+        
 # 登出
     uri: /service/logout
     mothod: GET
@@ -288,6 +294,7 @@ c2c
                     seller: sellerId,
                     buyer: buyerId,
                     time: Date.now(),
+                    pay_type: 付款方式（1，银行卡 2，微信 3，支付宝）
                 },
                 ...
             ]
@@ -427,6 +434,32 @@ c2c
         id:string 要删除的条目对应的ObjectId
     return:
         success || error
+
+# 获取提币验证码
+    uri:/service/custom_withdraw_request
+    mothod:GET
+    input:
+    return:
+        success||error
+
+# 提交提币请求
+    uri:/service/custom_withdraw_confirm
+    mothod:GET
+    input:
+        symbol 币种
+        to 提币地址，不在已添加的提币地址中会失败
+        amount 数量
+        code 提币验证码
+    return:
+        {
+            symbol: symbol, //币种
+            uid: uid,
+            to: to, //目标地址
+            amount: mongoose.Types.Decimal128.fromString(amount), // 数量
+            fee: mongoose.Types.Decimal128.fromString(fee), // 手续费
+            confirm: 0, // 0 待确认， 1已确认
+            time: Date.now(),
+        }
     
 # 获取充币记录
     uri:/service/deposit_history
