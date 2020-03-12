@@ -131,6 +131,17 @@ c2c
                 ...
             }//冻结资产
         }
+# 获取虚拟币价格
+    uri:/service/current_price
+    mothod:GET
+    input:null
+    return:
+    {
+        usdt: 7
+        btc: 53000
+        adr: 2
+        ald: 3
+    }
 
 # 获取充币地址
     uri: /service/create_address
@@ -195,6 +206,7 @@ c2c
                 canceled: 0, //c2c挂单状态（0：正常, 1:已取消）
                 time: Date.now(),
                 memo: memo, 
+                deals: Number //月成交量
             },
             ...
         ]
@@ -218,6 +230,7 @@ c2c
                 canceled: 0, //c2c挂单状态（0：正常, 1:已取消）
                 time: Date.now(),
                 memo: memo, 
+                deals: Number //月成交量
             },
             ...
         ]        
@@ -242,6 +255,7 @@ c2c
             canceled: 0, //c2c挂单状态（0：正常, 1:已取消）
             time: Date.now(),
             memo: memo, 
+            deals: Number //月成交量
         }
 # C2C下单
     uri: /c2c/order
@@ -322,6 +336,7 @@ c2c
             seller: sellerId,
             buyer: buyerId,
             time: Date.now(),
+            pay_type:  Number,//1：银行卡，2：微信，3：支付宝
         }
 # 卖家确认放币
     uri:/c2c/confirm
@@ -372,6 +387,7 @@ c2c
     mothod: GET
     input: 
         order_id: string 订单id
+        content: string 申诉内容
     return:
         更新后的订单信息
         {
@@ -387,6 +403,8 @@ c2c
             transfer_account: ctx.args.transfer_account,
             seller: sellerId,
             buyer: buyerId,
+            buyer_name: 买家用户名
+            seller_name: 卖家用户名
             time: Date.now(),
         }
 # 获取提币地址列表
