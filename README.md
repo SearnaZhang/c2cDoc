@@ -610,7 +610,13 @@ c2c
         uid 商家uid
     return:
         "xxx" 商家名称 || "" 未查找到
-
+# 获取商家电话
+    uri:/service/getPhoneNumber
+    mothod:GET
+    input:
+        uid 商家uid
+    return:
+        "13833722312" 商家名称 || "" 未查找到
 
 # order订单状态
     es.STATUS_WAIT_PAY = 0; 等待付款
